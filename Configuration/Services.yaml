@@ -1,0 +1,33 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  Ayacoo\ExampleSearch\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Domain/Model/*'
+
+  Ayacoo\ExampleSearch\EventListener\AddLiveSearchResultActionsListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'ayacoo/example-search/add-live-search-result-actions-listener'
+        event: 'TYPO3\CMS\Backend\Search\Event\ModifyResultItemInLiveSearchEvent'
+
+  Ayacoo\ExampleSearch\EventListener\BeforeSearchInDatabaseRecordProviderEventListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'ayacoo/example-search/before-search-in-database-record-provider-event-listener'
+        event: 'TYPO3\CMS\Backend\Search\Event\BeforeSearchInDatabaseRecordProviderEvent'
+
+  Ayacoo\ExampleSearch\EventListener\ModifyQueryForLiveSearchEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'ayacoo/example-search/modify-query-for-live-search-event-listener'
+        event: 'TYPO3\CMS\Backend\Search\Event\ModifyQueryForLiveSearchEvent'
+
+  Ayacoo\ExampleSearch\LiveSearch\DictionaryProvider:
+    tags:
+      - name: 'livesearch.provider'
+        priority: 70
