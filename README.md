@@ -1,2 +1,2 @@
 # examplesearch
-TYPO3 v12 search examples
+TYPO3 v14 search examples
